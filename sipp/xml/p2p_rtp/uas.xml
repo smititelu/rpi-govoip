@@ -70,12 +70,6 @@
 
   <recv request="ACK" crlf="true"> </recv>
 
-  <nop>
-    <action>
-      <exec rtp_echo="startaudio,0,PCMU/8000" />
-    </action>
-  </nop>
-
 
 
 
@@ -99,12 +93,6 @@
 
     ]]>
   </send>
-
-  <nop>
-    <action>
-      <exec rtp_echo="stopaudio,0,PCMU/8000" />
-    </action>
-  </nop>
 
 
 

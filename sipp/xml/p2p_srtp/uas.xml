@@ -52,9 +52,9 @@
       s=-
       c=IN IP[media_ip_type] [media_ip]
       t=0 0
-      m=audio [rtpstream_audio_port] RTP/SAVP 0 18 9 103 8 101
+      m=audio [media_port] RTP/SAVP 0 18 9 103 8 101
       a=crypto:[cryptotag1audio] [cryptosuiteaescm128sha1321audio] inline:[cryptokeyparams1audio]
-      a=rtcp:[rtpstream_audio_port+1]
+      a=rtcp:[media_port+1]
       a=sendrecv
       a=rtpmap:0 PCMU/8000
       a=rtpmap:18 G729/8000
@@ -70,12 +70,6 @@
   </send>
 
   <recv request="ACK" crlf="true"> </recv>
-
-  <nop>
-    <action>
-      <exec rtp_echo="startaudio,0,PCMU/8000" />
-    </action>
-  </nop>
 
 
 
@@ -100,12 +94,6 @@
 
     ]]>
   </send>
-
-  <nop>
-    <action>
-      <exec rtp_echo="stopaudio,0,PCMU/8000" />
-    </action>
-  </nop>
 
 
 
