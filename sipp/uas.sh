@@ -31,9 +31,11 @@ uas_start() {
 		-d $MESSAGES_PAUSE			\
 		-m $MESSAGES				\
 		-i $UAS_SIP_IP -p $UAS_SIP_PORT		\
+		-mi $UAS_RTP_IP				\
+		-min_rtp_port $UAS_RTP_PORT_MIN -max_rtp_port $UAS_RTP_PORT_MAX \
 		-sf "$DIR_TEST/$UAS_XML"		\
 		-inf "$DIR_CSV/$UAS_CSV"		\
-		-key domain ims.mnc001.mcc001.3gppnetwork.org   \
+		-rtp_echo				\
 		$SRV_SIP_IP:$SRV_SIP_PORT
 }
 
@@ -48,9 +50,11 @@ uas_start_bg() {
 		-d $MESSAGES_PAUSE			\
 		-m $MESSAGES				\
 		-i $UAS_SIP_IP -p $UAS_SIP_PORT		\
+		-mi $UAS_RTP_IP				\
+		-min_rtp_port $UAS_RTP_PORT_MIN -max_rtp_port $UAS_RTP_PORT_MAX \
 		-sf "$DIR_TEST/$UAS_XML"		\
 		-inf "$DIR_CSV/$UAS_CSV"		\
-		-key domain ims.mnc001.mcc001.3gppnetwork.org   \
+		-rtp_echo				\
 		$SRV_SIP_IP:$SRV_SIP_PORT &> /dev/null &
 }
 
