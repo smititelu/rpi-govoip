@@ -86,6 +86,9 @@ Built `.deb`s with bcg lib.
         │   └── uas.xml			-> ... for uas
         └── sub			-> SUBSCRIBE test xml
             └── uac.xml			-> ... for uac
+
+
+ulimit -Sn 55000
 ```
 
 
