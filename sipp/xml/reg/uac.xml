@@ -21,10 +21,10 @@
   <send retrans="500">
     <![CDATA[
 
-      REGISTER sip:[$uac_number]@[$uac_domain]:[remote_port] SIP/2.0
+      REGISTER sip:[$uac_number]@[$uac_domain] SIP/2.0
       Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
-      From: [$uac_number] <sip:[$uac_number]@[$uac_domain]:[remote_port]>;tag=[pid]
-      To: [$uac_number] <sip:[$uac_number]@[$uac_domain]:[remote_port]>
+      From: [$uac_number] <sip:[$uac_number]@[$uac_domain]>;tag=[pid]
+      To: [$uac_number] <sip:[$uac_number]@[$uac_domain]>
       Call-ID: [call_id]
       CSeq: 1 REGISTER
       Contact: <sip:[$uac_number]@[local_ip]:[local_port]>
@@ -52,10 +52,10 @@
   <send retrans="500">
     <![CDATA[
 
-      REGISTER sip:[$uac_number]@[$uac_domain]:[remote_port] SIP/2.0
+      REGISTER sip:[$uac_number]@[$uac_domain] SIP/2.0
       Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
-      From: [$uac_number] <sip:[$uac_number]@[$uac_domain]:[remote_port]>;tag=[pid]
-      To: [$uac_number] <sip:[$uac_number]@[$uac_domain]:[remote_port]>
+      From: [$uac_number] <sip:[$uac_number]@[$uac_domain]>;tag=[pid]
+      To: [$uac_number] <sip:[$uac_number]@[$uac_domain]>
       Call-ID: [call_id]
       CSeq: 1 REGISTER
       Contact: <sip:[$uac_number]@[local_ip]:[local_port]>

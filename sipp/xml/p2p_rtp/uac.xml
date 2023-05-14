@@ -26,8 +26,8 @@
 
       INVITE sip:[$uas_number]@[$uas_domain] SIP/2.0
       Via: SIP/2.0/[transport] [local_ip]:[local_port]
-      From: <sip:[$uac_number]@[$uac_domain]:[local_port]>;tag=[pid]
-      To: <sip:[$uas_number]@[$uas_domain]:[remote_port]>[peer_tag_param]
+      From: <sip:[$uac_number]@[$uac_domain]>;tag=[pid]
+      To: <sip:[$uas_number]@[$uas_domain]>[peer_tag_param]
       Call-ID: [call_id]
       CSeq: [cseq] INVITE
       Contact: <sip:[$uac_number]@[local_ip]:[local_port]>
@@ -88,8 +88,8 @@
 
       INVITE sip:[$uas_number]@[$uas_domain] SIP/2.0
       Via: SIP/2.0/[transport] [local_ip]:[local_port]
-      From: <sip:[$uac_number]@[$uac_domain]:[local_port]>;tag=[pid]
-      To: <sip:[$uas_number]@[$uas_domain]:[remote_port]>
+      From: <sip:[$uac_number]@[$uac_domain]>;tag=[pid]
+      To: <sip:[$uas_number]@[$uas_domain]>
       Call-ID: [call_id]
       CSeq: [cseq] INVITE
       Contact: <sip:[$uac_number]@[local_ip]:[local_port]>
@@ -154,8 +154,8 @@
 
       ACK [next_url] SIP/2.0
       Via: SIP/2.0/[transport] [local_ip]:[local_port]
-      From: <sip:[$uac_number]@[$uac_domain]:[local_port]>;tag=[pid]
-      To: <sip:[$uas_number]@[$uas_domain]:[remote_port]>[peer_tag_param]
+      From: <sip:[$uac_number]@[$uac_domain]>;tag=[pid]
+      To: <sip:[$uas_number]@[$uas_domain]>[peer_tag_param]
       [routes]
       Call-ID: [call_id]
       CSeq: [cseq] ACK
@@ -187,8 +187,8 @@
 
       BYE [next_url] SIP/2.0
       Via: SIP/2.0/[transport] [local_ip]:[local_port]
-      From: <sip:[$uac_number]@[$uac_domain]:[local_port]>;tag=[pid]
-      To: <sip:[$uas_number]@[$uas_domain]:[remote_port]>[peer_tag_param]
+      From: <sip:[$uac_number]@[$uac_domain]>;tag=[pid]
+      To: <sip:[$uas_number]@[$uas_domain]>[peer_tag_param]
       [routes]
       Call-ID: [call_id]
       CSeq: [cseq] BYE
@@ -216,8 +216,8 @@
 
       ACK sip:[$uas_number]@[remote_ip] SIP/2.0
       Via: SIP/2.0/[transport] [local_ip]:[local_port]
-      From: <sip:[$uac_number]@[$uac_domain]:[local_port]>;tag=[pid]
-      To: <sip:[$uas_number]@[$uas_domain]:[remote_port]>[peer_tag_param]
+      From: <sip:[$uac_number]@[$uac_domain]>;tag=[pid]
+      To: <sip:[$uas_number]@[$uas_domain]>[peer_tag_param]
       [routes]
       Call-ID: [call_id]
       CSeq: [cseq] ACK
