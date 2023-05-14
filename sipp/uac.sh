@@ -34,7 +34,7 @@ uac_start() {
 		-sf "$DIR_TEST/$UAC_XML"		\
 		-inf "$DIR_CSV/$UAC_CSV"		\
 		-inf "$DIR_CSV/$UAS_CSV"		\
-		-key domain ims.mnc001.mcc001.3gppnetwork.org	\
+		-key custom_event message-summary	\
 		$SRV_SIP_IP:$SRV_SIP_PORT
 }
 
@@ -52,7 +52,7 @@ uac_start_bg() {
 		-sf "$DIR_TEST/$UAC_XML"		\
 		-inf "$DIR_CSV/$UAC_CSV"		\
 		-inf "$DIR_CSV/$UAS_CSV"		\
-		-key domain ims.mnc001.mcc001.3gppnetwork.org	\
+		-key custom_event message-summary	\
 		$SRV_SIP_IP:$SRV_SIP_PORT &> /dev/null &
 }
 

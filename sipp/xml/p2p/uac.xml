@@ -9,8 +9,11 @@
   <nop crlf="true">
     <action>
       <assignstr assign_to="uas_number" value="[field0 file=uas.csv]" />
+      <assignstr assign_to="uas_domain" value="[field2 file=uas.csv]" />
+
       <assignstr assign_to="uac_number" value="[field0 file=uac.csv]" />
       <assignstr assign_to="uac_passwd" value="[field1 file=uac.csv]" />
+      <assignstr assign_to="uac_domain" value="[field2 file=uac.csv]" />
     </action>
   </nop>
 
@@ -21,10 +24,10 @@
   <send retrans="500">
     <![CDATA[
 
-      INVITE sip:[$uas_number]@[remote_ip] SIP/2.0
+      INVITE sip:[$uas_number]@[$uas_domain] SIP/2.0
       Via: SIP/2.0/[transport] [local_ip]:[local_port]
-      From: <sip:[$uac_number]@[local_ip]:[local_port]>;tag=[pid]
-      To: <sip:[$uas_number]@[remote_ip]:[remote_port]>[peer_tag_param]
+      From: <sip:[$uac_number]@[$uac_domain]:[local_port]>;tag=[pid]
+      To: <sip:[$uas_number]@[$uas_domain]:[remote_port]>[peer_tag_param]
       Call-ID: [call_id]
       CSeq: [cseq] INVITE
       Contact: <sip:[$uac_number]@[local_ip]:[local_port]>
@@ -75,10 +78,10 @@
   <send retrans="500">
     <![CDATA[
 
-      INVITE sip:[$uas_number]@[remote_ip] SIP/2.0
+      INVITE sip:[$uas_number]@[$uas_domain] SIP/2.0
       Via: SIP/2.0/[transport] [local_ip]:[local_port]
-      From: <sip:[$uac_number]@[local_ip]:[local_port]>;tag=[pid]
-      To: <sip:[$uas_number]@[remote_ip]:[remote_port]>
+      From: <sip:[$uac_number]@[$uac_domain]:[local_port]>;tag=[pid]
+      To: <sip:[$uas_number]@[$uas_domain]:[remote_port]>
       Call-ID: [call_id]
       CSeq: [cseq] INVITE
       Contact: <sip:[$uac_number]@[local_ip]:[local_port]>
@@ -126,14 +129,17 @@
   <!-- label: done auth -->
   <label id="done_auth" />
 
+  <!-- pause -->
+  <pause milliseconds="1000"/>
+
   <!-- ACK -->
   <send crlf="true">
     <![CDATA[
 
       ACK [next_url] SIP/2.0
       Via: SIP/2.0/[transport] [local_ip]:[local_port]
-      From: <sip:[$uac_number]@[local_ip]:[local_port]>;tag=[pid]
-      To: <sip:[$uas_number]@[remote_ip]:[remote_port]>[peer_tag_param]
+      From: <sip:[$uac_number]@[$uac_domain]:[local_port]>;tag=[pid]
+      To: <sip:[$uas_number]@[$uas_domain]:[remote_port]>[peer_tag_param]
       [routes]
       Call-ID: [call_id]
       CSeq: [cseq] ACK
@@ -159,8 +165,8 @@
 
       BYE [next_url] SIP/2.0
       Via: SIP/2.0/[transport] [local_ip]:[local_port]
-      From: <sip:[$uac_number]@[local_ip]:[local_port]>;tag=[pid]
-      To: <sip:[$uas_number]@[remote_ip]:[remote_port]>[peer_tag_param]
+      From: <sip:[$uac_number]@[$uac_domain]:[local_port]>;tag=[pid]
+      To: <sip:[$uas_number]@[$uas_domain]:[remote_port]>[peer_tag_param]
       [routes]
       Call-ID: [call_id]
       CSeq: [cseq] BYE
@@ -180,13 +186,16 @@
   <!-- label: got error -->
   <label id="got_error"/>
 
+  <!-- pause -->
+  <pause milliseconds="1000"/>
+
   <send crlf="true">
     <![CDATA[
 
       ACK sip:[$uas_number]@[remote_ip] SIP/2.0
       Via: SIP/2.0/[transport] [local_ip]:[local_port]
-      From: <sip:[$uac_number]@[local_ip]:[local_port]>;tag=[pid]
-      To: <sip:[$uas_number]@[remote_ip]:[remote_port]>[peer_tag_param]
+      From: <sip:[$uac_number]@[$uac_domain]:[local_port]>;tag=[pid]
+      To: <sip:[$uas_number]@[$uas_domain]:[remote_port]>[peer_tag_param]
       [routes]
       Call-ID: [call_id]
       CSeq: [cseq] ACK

@@ -1,9 +1,9 @@
 # rpi govoip
-Overclocked raspberry pi 3 running raspbian buster with a U3 MicroSD card.
+Overclocked raspberry pi 4 running raspbian buster with a Sandisk U1 MicroSD card.
 
 ```
 pi@raspberrypi:~ $ cat /etc/issue
-Raspbian GNU/Linux 10 \n \l
+Raspbian GNU/Linux 11 \n \l
 ```
 
 ```
@@ -11,23 +11,8 @@ pi@raspberrypi:~ $ uname -a
 Linux pisip 5.4.51-v7+ #1327 SMP Thu Jul 23 10:58:46 BST 2020 armv7l GNU/Linux
 ```
 
-```
-pi@raspberrypi:~ $ cat /boot/config.txt
-...
-total_mem=1024
-arm_freq=1300
-core_freq=500
-sdram_freq=500
-sdram_schmoo=0x02000020
-over_voltage=2
-sdram_over_voltage=2
-```
-
-
 <br />
 <br />
-
-
 
 # rpi govoip repo
 Add repo key:
@@ -39,7 +24,7 @@ wget -qO - https://repo.govoip.ro/repo.key | sudo apt-key add -
 Add repo:
 
 ```
-echo 'deb https://repo.govoip.ro buster main' | sudo tee --append /etc/apt/sources.list > /dev/null
+echo 'deb https://repo.govoip.ro bullseye main' | sudo tee --append /etc/apt/sources.list > /dev/null
 ```
 
 Get repo:
@@ -55,13 +40,13 @@ sudo apt-get install ngcp-rtpengine
 ### 1. Kamailio
 Built `.deb`s with all modules.
 
-- kamailio 5.6.1 -> 5.6 branch at commit d8f98b8
+- kamailio 5.7.0 -> 5.7 branch at commit 5f3ed08
 
 
 ### 2. RTPEngine
 Built `.deb`s with all modules.
 
-- rtpengine 11.1.0.0 -> master branch at commit b1242be
+- rtpengine 11.4.0.0 -> master branch at commit 13a7e1d
 
 
 ### 3. bcg
@@ -96,9 +81,11 @@ Built `.deb`s with bcg lib.
         ├── p2p_srtp		-> INVITE test with SRTP media xml
         │   ├── uac.xml			-> ... for uac
         │   └── uas.xml			-> ... for uas
-        └── reg			-> REGISTER test xml
-            ├── uac.xml			-> ... for uac
-            └── uas.xml			-> ... for uas
+        ├── reg			-> REGISTER test xml
+        │   ├── uac.xml			-> ... for uac
+        │   └── uas.xml			-> ... for uas
+        └── sub			-> SUBSCRIBE test xml
+            └── uac.xml			-> ... for uac
 ```
 
 
@@ -197,4 +184,16 @@ SIPP UAC  ------->  RPI Kamailio -------> SIPP UAS
 
            200 OK                 200 OK
 SIPP UAC  <-------  RPI Kamailio <------- SIPP UAS
+```
+
+##### 5. SUBSCRIBE/NOTIFY test
+```
+         SUBSCRIBE
+SIPP UAC  ------->  RPI Kamailio
+           200 OK
+SIPP UAC  <-------  RPI Kamailio
+           NOTIFY
+SIPP UAC  <-------  RPI Kamailio
+           200 OK
+SIPP UAC  ------->  RPI Kamailio
 ```

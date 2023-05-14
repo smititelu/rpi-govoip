@@ -10,6 +10,7 @@
     <action>
       <assignstr assign_to="uas_number" value="[field0 file=uas.csv]" />
       <assignstr assign_to="uas_passwd" value="[field1 file=uas.csv]" />
+      <assignstr assign_to="uas_domain" value="[field2 file=uas.csv]" />
     </action>
   </nop>
 
@@ -20,10 +21,10 @@
   <send retrans="500">
     <![CDATA[
 
-      REGISTER sip:[$uas_number]@[remote_ip]:[remote_port] SIP/2.0
+      REGISTER sip:[$uas_number]@[$uas_domain]:[remote_port] SIP/2.0
       Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
       From: [$uas_number] <sip:[$uas_number]@[local_ip]:[local_port]>;tag=[pid]
-      To: [$uas_number] <sip:[$uas_number]@[remote_ip]:[remote_port]>
+      To: [$uas_number] <sip:[$uas_number]@[$uas_domain]:[remote_port]>
       Call-ID: [call_id]
       CSeq: 1 REGISTER
       Contact: [$uas_number] <sip:[$uas_number]@[local_ip]:[local_port]>
@@ -52,10 +53,10 @@
   <send retrans="500">
     <![CDATA[
 
-      REGISTER sip:[$uas_number]@[remote_ip]:[remote_port] SIP/2.0
+      REGISTER sip:[$uas_number]@[$uas_domain]:[remote_port] SIP/2.0
       Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
       From: [$uas_number] <sip:[$uas_number]@[local_ip]:[local_port]>;tag=[pid]
-      To: [$uas_number] <sip:[$uas_number]@[remote_ip]:[remote_port]>
+      To: [$uas_number] <sip:[$uas_number]@[$uas_domain]:[remote_port]>
       Call-ID: [call_id]
       CSeq: 1 REGISTER
       Contact: [$uas_number] <sip:[$uas_number]@[local_ip]:[local_port]>
