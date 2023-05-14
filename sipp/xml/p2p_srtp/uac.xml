@@ -23,7 +23,7 @@
 
       INVITE sip:[$uas_number]@[remote_ip] SIP/2.0
       Via: SIP/2.0/[transport] [local_ip]:[local_port]
-      From: <sip:[$uac_number]@[local_ip]:[local_port]>;tag=[call_number]
+      From: <sip:[$uac_number]@[local_ip]:[local_port]>;tag=[pid]
       To: <sip:[$uas_number]@[remote_ip]:[remote_port]>[peer_tag_param]
       Call-ID: [call_id]
       CSeq: [cseq] INVITE
@@ -37,9 +37,8 @@
       s=-
       c=IN IP[media_ip_type] [media_ip]
       t=0 0
-      m=audio [rtpstream_audio_port] RTP/AVP 0 18 9 103 8 101
+      m=audio [rtpstream_audio_port] RTP/SAVP 0 18 9 103 8 101
       a=crypto:[cryptotag1audio] [cryptosuiteaescm128sha1321audio] inline:[cryptokeyparams1audio]
-      a=crypto:[cryptotag2audio] [cryptosuiteaescm128sha1802audio] inline:[cryptokeyparams2audio]
       a=rtcp:[rtpstream_audio_port+1]
       a=sendrecv
       a=rtpmap:0 PCMU/8000
@@ -87,7 +86,7 @@
 
       INVITE sip:[$uas_number]@[remote_ip] SIP/2.0
       Via: SIP/2.0/[transport] [local_ip]:[local_port]
-      From: <sip:[$uac_number]@[local_ip]:[local_port]>;tag=[call_number]
+      From: <sip:[$uac_number]@[local_ip]:[local_port]>;tag=[pid]
       To: <sip:[$uas_number]@[remote_ip]:[remote_port]>
       Call-ID: [call_id]
       CSeq: [cseq] INVITE
@@ -102,9 +101,8 @@
       s=-
       c=IN IP[media_ip_type] [media_ip]
       t=0 0
-      m=audio [rtpstream_audio_port] RTP/AVP 0 18 9 103 8 101
+      m=audio [rtpstream_audio_port] RTP/SAVP 0 18 9 103 8 101
       a=crypto:[cryptotag1audio] [cryptosuiteaescm128sha1321audio] inline:[cryptokeyparams1audio]
-      a=crypto:[cryptotag2audio] [cryptosuiteaescm128sha1802audio] inline:[cryptokeyparams2audio]
       a=rtcp:[rtpstream_audio_port+1]
       a=sendrecv
       a=rtpmap:0 PCMU/8000
@@ -152,7 +150,7 @@
 
       ACK [next_url] SIP/2.0
       Via: SIP/2.0/[transport] [local_ip]:[local_port]
-      From: <sip:[$uac_number]@[local_ip]:[local_port]>;tag=[call_number]
+      From: <sip:[$uac_number]@[local_ip]:[local_port]>;tag=[pid]
       To: <sip:[$uas_number]@[remote_ip]:[remote_port]>[peer_tag_param]
       [routes]
       Call-ID: [call_id]
@@ -185,7 +183,7 @@
 
       BYE [next_url] SIP/2.0
       Via: SIP/2.0/[transport] [local_ip]:[local_port]
-      From: <sip:[$uac_number]@[local_ip]:[local_port]>;tag=[call_number]
+      From: <sip:[$uac_number]@[local_ip]:[local_port]>;tag=[pid]
       To: <sip:[$uas_number]@[remote_ip]:[remote_port]>[peer_tag_param]
       [routes]
       Call-ID: [call_id]
@@ -211,7 +209,7 @@
 
       ACK sip:[$uas_number]@[remote_ip] SIP/2.0
       Via: SIP/2.0/[transport] [local_ip]:[local_port]
-      From: <sip:[$uac_number]@[local_ip]:[local_port]>;tag=[call_number]
+      From: <sip:[$uac_number]@[local_ip]:[local_port]>;tag=[pid]
       To: <sip:[$uas_number]@[remote_ip]:[remote_port]>[peer_tag_param]
       [routes]
       Call-ID: [call_id]

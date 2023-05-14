@@ -22,7 +22,7 @@
 
       REGISTER sip:[$uas_number]@[remote_ip]:[remote_port] SIP/2.0
       Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
-      From: [$uas_number] <sip:[$uas_number]@[local_ip]:[local_port]>;tag=[call_number]
+      From: [$uas_number] <sip:[$uas_number]@[local_ip]:[local_port]>;tag=[pid]
       To: [$uas_number] <sip:[$uas_number]@[remote_ip]:[remote_port]>
       Call-ID: [call_id]
       CSeq: 1 REGISTER
@@ -54,7 +54,7 @@
 
       REGISTER sip:[$uas_number]@[remote_ip]:[remote_port] SIP/2.0
       Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
-      From: [$uas_number] <sip:[$uas_number]@[local_ip]:[local_port]>;tag=[call_number]
+      From: [$uas_number] <sip:[$uas_number]@[local_ip]:[local_port]>;tag=[pid]
       To: [$uas_number] <sip:[$uas_number]@[remote_ip]:[remote_port]>
       Call-ID: [call_id]
       CSeq: 1 REGISTER

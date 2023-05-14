@@ -23,7 +23,7 @@
 
       INVITE sip:[$uas_number]@[remote_ip] SIP/2.0
       Via: SIP/2.0/[transport] [local_ip]:[local_port]
-      From: <sip:[$uac_number]@[local_ip]:[local_port]>;tag=[call_number]
+      From: <sip:[$uac_number]@[local_ip]:[local_port]>;tag=[pid]
       To: <sip:[$uas_number]@[remote_ip]:[remote_port]>[peer_tag_param]
       Call-ID: [call_id]
       CSeq: [cseq] INVITE
@@ -77,7 +77,7 @@
 
       INVITE sip:[$uas_number]@[remote_ip] SIP/2.0
       Via: SIP/2.0/[transport] [local_ip]:[local_port]
-      From: <sip:[$uac_number]@[local_ip]:[local_port]>;tag=[call_number]
+      From: <sip:[$uac_number]@[local_ip]:[local_port]>;tag=[pid]
       To: <sip:[$uas_number]@[remote_ip]:[remote_port]>
       Call-ID: [call_id]
       CSeq: [cseq] INVITE
@@ -132,7 +132,7 @@
 
       ACK [next_url] SIP/2.0
       Via: SIP/2.0/[transport] [local_ip]:[local_port]
-      From: <sip:[$uac_number]@[local_ip]:[local_port]>;tag=[call_number]
+      From: <sip:[$uac_number]@[local_ip]:[local_port]>;tag=[pid]
       To: <sip:[$uas_number]@[remote_ip]:[remote_port]>[peer_tag_param]
       [routes]
       Call-ID: [call_id]
@@ -159,7 +159,7 @@
 
       BYE [next_url] SIP/2.0
       Via: SIP/2.0/[transport] [local_ip]:[local_port]
-      From: <sip:[$uac_number]@[local_ip]:[local_port]>;tag=[call_number]
+      From: <sip:[$uac_number]@[local_ip]:[local_port]>;tag=[pid]
       To: <sip:[$uas_number]@[remote_ip]:[remote_port]>[peer_tag_param]
       [routes]
       Call-ID: [call_id]
@@ -185,7 +185,7 @@
 
       ACK sip:[$uas_number]@[remote_ip] SIP/2.0
       Via: SIP/2.0/[transport] [local_ip]:[local_port]
-      From: <sip:[$uac_number]@[local_ip]:[local_port]>;tag=[call_number]
+      From: <sip:[$uac_number]@[local_ip]:[local_port]>;tag=[pid]
       To: <sip:[$uas_number]@[remote_ip]:[remote_port]>[peer_tag_param]
       [routes]
       Call-ID: [call_id]
