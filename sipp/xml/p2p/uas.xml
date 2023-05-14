@@ -27,7 +27,7 @@
       [last_To:];tag=[call_number]
       [last_Call-ID:]
       [last_CSeq:]
-      Contact: [$uas_number] <sip:[$uas_number]@[local_ip]:[local_port]>
+      Contact: <sip:[$uas_number]@[local_ip]:[local_port]>
       Content-Length: 0
 
     ]]>
@@ -43,7 +43,7 @@
       [last_To:];tag=[call_number]
       [last_Call-ID:]
       [last_CSeq:]
-      Contact: [$uas_number] <sip:[$uas_number]@[local_ip]:[local_port]>
+      Contact: <sip:[$uas_number]@[local_ip]:[local_port]>
       Content-Type: application/sdp
       Content-Length:[len]
 
@@ -79,7 +79,7 @@
       [last_To:];tag=[call_number]
       [last_Call-ID:]
       [last_CSeq:]
-      Contact: [$uas_number] <sip:[$uas_number]@[local_ip]:[local_port]>
+      Contact: <sip:[$uas_number]@[local_ip]:[local_port]>
       Content-Type: application/sdp
       Content-Length:[len]
 

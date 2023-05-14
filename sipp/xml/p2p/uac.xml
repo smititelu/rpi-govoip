@@ -27,7 +27,7 @@
       To: <sip:[$uas_number]@[remote_ip]:[remote_port]>[peer_tag_param]
       Call-ID: [call_id]
       CSeq: [cseq] INVITE
-      Contact: [$uac_number] <sip:[$uac_number]@[local_ip]:[local_port]>
+      Contact: <sip:[$uac_number]@[local_ip]:[local_port]>
       Max-Forwards: 70
       Content-Type: application/sdp
       Content-Length:[len]
@@ -55,6 +55,7 @@
   <recv response="404" optional="true" rrs="true" next="got_error"> </recv>
   <recv response="405" optional="true" rrs="true" next="got_error"> </recv>
   <recv response="406" optional="true" rrs="true" next="got_error"> </recv>
+  <recv response="482" optional="true" rrs="true" next="got_error"> </recv>
   <recv response="483" optional="true" rrs="true" next="got_error"> </recv>
   <recv response="486" optional="true" rrs="true" next="got_error"> </recv>
 
@@ -80,7 +81,7 @@
       To: <sip:[$uas_number]@[remote_ip]:[remote_port]>
       Call-ID: [call_id]
       CSeq: [cseq] INVITE
-      Contact: [$uac_number] <sip:[$uac_number]@[local_ip]:[local_port]>
+      Contact: <sip:[$uac_number]@[local_ip]:[local_port]>
       Max-Forwards: 70
       [authentication username="[$uac_number]" password="[$uac_passwd]"]
       Content-Type: application/sdp
@@ -109,6 +110,7 @@
   <recv response="404" optional="true" rrs="true" next="got_error"> </recv>
   <recv response="405" optional="true" rrs="true" next="got_error"> </recv>
   <recv response="406" optional="true" rrs="true" next="got_error"> </recv>
+  <recv response="482" optional="true" rrs="true" next="got_error"> </recv>
   <recv response="483" optional="true" rrs="true" next="got_error"> </recv>
   <recv response="486" optional="true" rrs="true" next="got_error"> </recv>
 
@@ -135,7 +137,7 @@
       [routes]
       Call-ID: [call_id]
       CSeq: [cseq] ACK
-      Contact: [$uac_number] <sip:[$uac_number]@[local_ip]:[local_port]>
+      Contact: <sip:[$uac_number]@[local_ip]:[local_port]>
       Max-Forwards: 70
       Content-Length: 0
 
@@ -162,7 +164,7 @@
       [routes]
       Call-ID: [call_id]
       CSeq: [cseq] BYE
-      Contact: [$uac_number] <sip:[$uac_number]@[local_ip]:[local_port]>
+      Contact: <sip:[$uac_number]@[local_ip]:[local_port]>
       Max-Forwards: 70
       Subject: Performance Test
       Content-Length: 0
@@ -188,7 +190,7 @@
       [routes]
       Call-ID: [call_id]
       CSeq: [cseq] ACK
-      Contact: [$uac_number] <sip:[$uac_number]@[local_ip]:[local_port]>
+      Contact: <sip:[$uac_number]@[local_ip]:[local_port]>
       Max-Forwards: 70
       Content-Length: 0
 
