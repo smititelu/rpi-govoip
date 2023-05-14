@@ -20,13 +20,13 @@
   <send retrans="500">
     <![CDATA[
 
-      REGISTER sip:[$uac_number]@[remote_ip]:[remote_port] SIP/2.0
+      REGISTER sip:[$uac_number]@[domain]:[remote_port] SIP/2.0
       Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
-      From: [$uac_number] <sip:[$uac_number]@[remote_ip]:[remote_port]>;tag=[pid]
-      To: [$uac_number] <sip:[$uac_number]@[remote_ip]:[remote_port]>
+      From: [$uac_number] <sip:[$uac_number]@[domain]:[remote_port]>;tag=[pid]
+      To: [$uac_number] <sip:[$uac_number]@[domain]:[remote_port]>
       Call-ID: [call_id]
       CSeq: 1 REGISTER
-      Contact: [$uac_number] <sip:[$uac_number]@[local_ip]:[local_port]>
+      Contact: <sip:[$uac_number]@[local_ip]:[local_port]>
       Max-Forwards: 70
       Subject: Performance Test
       Expires: 3600
@@ -36,10 +36,9 @@
     ]]>
   </send>
 
+  <recv response="100" optional="true"> </recv>
   <recv response="405" optional="true" next="got_err"> </recv>
-
   <recv response="401" optional="true" next="got_auth" auth="true"> </recv>
-
   <recv response="200" optional="false" next="done_auth" crlf="true"> </recv>
 
 
@@ -52,13 +51,13 @@
   <send retrans="500">
     <![CDATA[
 
-      REGISTER sip:[$uac_number]@[remote_ip]:[remote_port] SIP/2.0
+      REGISTER sip:[$uac_number]@[domain]:[remote_port] SIP/2.0
       Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
-      From: [$uac_number] <sip:[$uac_number]@[remote_ip]:[remote_port]>;tag=[pid]
-      To: [$uac_number] <sip:[$uac_number]@[remote_ip]:[remote_port]>
+      From: [$uac_number] <sip:[$uac_number]@[domain]:[remote_port]>;tag=[pid]
+      To: [$uac_number] <sip:[$uac_number]@[domain]:[remote_port]>
       Call-ID: [call_id]
       CSeq: 1 REGISTER
-      Contact: [$uac_number] <sip:[$uac_number]@[local_ip]:[local_port]>
+      Contact: <sip:[$uac_number]@[local_ip]:[local_port]>
       Max-Forwards: 70
       [authentication username="[$uac_number]" password="[$uac_passwd]"]
       Subject: Performance Test
@@ -69,11 +68,11 @@
     ]]>
   </send>
 
+  <recv response="100" optional="true"> </recv>
   <recv response="405" optional="true" next="got_err"> </recv>
-
   <recv response="401" optional="true" next="done_auth"> </recv>
-
   <recv response="200" optional="false" next="done_all"> </recv>
+
 
 
 

@@ -31,10 +31,10 @@ uac_start() {
 		-d $MESSAGES_PAUSE			\
 		-m $MESSAGES				\
 		-i $UAC_SIP_IP -p $UAC_SIP_PORT		\
-		-mi $UAC_RTP_IP -mp $UAC_RTP_PORT	\
 		-sf "$DIR_TEST/$UAC_XML"		\
 		-inf "$DIR_CSV/$UAC_CSV"		\
 		-inf "$DIR_CSV/$UAS_CSV"		\
+		-key domain ims.mnc001.mcc001.3gppnetwork.org	\
 		$SRV_SIP_IP:$SRV_SIP_PORT
 }
 
@@ -49,10 +49,10 @@ uac_start_bg() {
 		-d $MESSAGES_PAUSE			\
 		-m $MESSAGES				\
 		-i $UAC_SIP_IP -p $UAC_SIP_PORT		\
-		-mi $UAC_RTP_IP -mp $UAC_RTP_PORT	\
 		-sf "$DIR_TEST/$UAC_XML"		\
 		-inf "$DIR_CSV/$UAC_CSV"		\
 		-inf "$DIR_CSV/$UAS_CSV"		\
+		-key domain ims.mnc001.mcc001.3gppnetwork.org	\
 		$SRV_SIP_IP:$SRV_SIP_PORT &> /dev/null &
 }
 

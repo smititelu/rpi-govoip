@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE scenario SYSTEM "sipp.dtd">
+
+<!-- From: uac_number, To: uac_number -->
+
+<scenario name="SUBSCRIBE/UNSUBSCRIBE">
+
+  <!-- variables -->
+  <nop>
+    <action>
+      <assignstr assign_to="uac_number" value="[field0 file=uac.csv]" />
+    </action>
+  </nop>
+
+  <send retrans="500">
+    <![CDATA[
+
+      SUBSCRIBE sip:[$uac_number]@[domain]:[remote_port] SIP/2.0
+      Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
+      From: [$uac_number] <sip:[$uac_number]@[domain]:[remote_port]>;tag=[pid]
+      To: [$uac_number] <sip:[$uac_number]@[domain]:[remote_port]>
+      Call-ID: [call_id]
+      CSeq: 1 SUBSCRIBE
+      Contact: <sip:[$uac_number]@[local_ip]:[local_port]>
+      Expires: 2000
+      Event: ua-profile
+      Max-Forwards: 70
+      Content-Length: 0
+
+    ]]>
+  </send>
+  <recv response="200" optional="false"> </recv>
+
+  <recv request="NOTIFY"> </recv>
+  <send crlf="true">
+    <![CDATA[
+
+      SIP/2.0 202 OK
+      [last_Via:]
+      [last_From:]
+      [last_Record-Route:]
+      [last_To:];tag=[pid]
+      [last_Call-ID:]
+      [last_CSeq:]
+      Contact: <sip:SRCNO@[local_ip]:[local_port]>
+      Content-Type: application/sdp
+      Content-Length: 0
+
+    ]]>
+  </send>
+
+
+
+
+  <send retrans="500">
+    <![CDATA[
+
+      SUBSCRIBE sip:[$uac_number]@[domain]:[remote_port] SIP/2.0
+      Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
+      From: [$uac_number] <sip:[$uac_number]@[domain]:[remote_port]>;tag=[pid]
+      To: [$uac_number] <sip:[$uac_number]@[domain]:[remote_port]>
+      Call-ID: [call_id]
+      CSeq: 3 SUBSCRIBE
+      Contact: <sip:[$uac_number]@[local_ip]:[local_port]>
+      Expires: 1000
+      Event: message-summary
+      Max-Forwards: 70
+      Content-Length: 0
+
+    ]]>
+  </send>
+  <recv response="200" optional="false"> </recv>
+
+  <recv request="NOTIFY"> </recv>
+  <send crlf="true">
+    <![CDATA[
+
+      SIP/2.0 202 OK
+      [last_Via:]
+      [last_From:]
+      [last_Record-Route:]
+      [last_To:];tag=[pid]
+      [last_Call-ID:]
+      [last_CSeq:]
+      Contact: <sip:SRCNO@[local_ip]:[local_port]>
+      Content-Type: application/sdp
+      Content-Length: 0
+
+    ]]>
+  </send>
+
+
+
+
+  <send retrans="500">
+    <![CDATA[
+
+      SUBSCRIBE sip:[$uac_number]@[domain]:[remote_port] SIP/2.0
+      Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
+      From: [$uac_number] <sip:[$uac_number]@[domain]:[remote_port]>;tag=[pid]
+      To: [$uac_number] <sip:[$uac_number]@[domain]:[remote_port]>
+      Call-ID: [call_id]
+      CSeq: 5 SUBSCRIBE
+      Contact: <sip:[$uac_number]@[local_ip]:[local_port]>
+      Expires: 2100
+      Event: ua-profile
+      Max-Forwards: 70
+      Content-Length: 0
+
+    ]]>
+  </send>
+  <recv response="200" optional="false"> </recv>
+
+  <recv request="NOTIFY"> </recv>
+  <send crlf="true">
+    <![CDATA[
+
+      SIP/2.0 202 OK
+      [last_Via:]
+      [last_From:]
+      [last_Record-Route:]
+      [last_To:];tag=[pid]
+      [last_Call-ID:]
+      [last_CSeq:]
+      Contact: <sip:SRCNO@[local_ip]:[local_port]>
+      Content-Type: application/sdp
+      Content-Length: 0
+
+    ]]>
+  </send>
+
+
+
+
+  <send retrans="500">
+    <![CDATA[
+
+      SUBSCRIBE sip:[$uac_number]@[domain]:[remote_port] SIP/2.0
+      Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
+      From: [$uac_number] <sip:[$uac_number]@[domain]:[remote_port]>;tag=[pid]
+      To: [$uac_number] <sip:[$uac_number]@[domain]:[remote_port]>
+      Call-ID: [call_id]
+      CSeq: 7 SUBSCRIBE
+      Contact: <sip:[$uac_number]@[local_ip]:[local_port]>
+      Expires: 3100
+      Event: message-summary
+      Max-Forwards: 70
+      Content-Length: 0
+
+    ]]>
+  </send>
+  <recv response="200" optional="false"> </recv>
+
+  <recv request="NOTIFY"> </recv>
+  <send crlf="true">
+    <![CDATA[
+
+      SIP/2.0 202 OK
+      [last_Via:]
+      [last_From:]
+      [last_Record-Route:]
+      [last_To:];tag=[pid]
+      [last_Call-ID:]
+      [last_CSeq:]
+      Contact: <sip:SRCNO@[local_ip]:[local_port]>
+      Content-Type: application/sdp
+      Content-Length: 0
+
+    ]]>
+  </send>
+
+
+
+
+  <pause milliseconds="15000" crlf="true"/>
+
+
+
+
+  <send retrans="500">
+    <![CDATA[
+
+      SUBSCRIBE sip:[$uac_number]@[domain]:[remote_port] SIP/2.0
+      Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
+      From: [$uac_number] <sip:[$uac_number]@[domain]:[remote_port]>;tag=[pid]
+      To: [$uac_number] <sip:[$uac_number]@[domain]:[remote_port]>
+      Call-ID: [call_id]
+      CSeq: 9 SUBSCRIBE
+      Contact: <sip:[$uac_number]@[local_ip]:[local_port]>
+      Expires: 0
+      Event: ua-profile
+      Max-Forwards: 70
+      Content-Length: 0
+
+    ]]>
+  </send>
+  <recv response="200" optional="false"> </recv>
+
+  <recv request="NOTIFY"> </recv>
+  <send crlf="true">
+    <![CDATA[
+
+      SIP/2.0 202 OK
+      [last_Via:]
+      [last_From:]
+      [last_Record-Route:]
+      [last_To:];tag=[pid]
+      [last_Call-ID:]
+      [last_CSeq:]
+      Contact: <sip:SRCNO@[local_ip]:[local_port]>
+      Content-Type: application/sdp
+      Content-Length: 0
+
+    ]]>
+  </send>
+
+
+
+
+  <send retrans="500">
+    <![CDATA[
+
+      SUBSCRIBE sip:[$uac_number]@[domain]:[remote_port] SIP/2.0
+      Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
+      From: [$uac_number] <sip:[$uac_number]@[domain]:[remote_port]>;tag=[pid]
+      To: [$uac_number] <sip:[$uac_number]@[domain]:[remote_port]>
+      Call-ID: [call_id]
+      CSeq: 11 SUBSCRIBE
+      Contact: <sip:[$uac_number]@[local_ip]:[local_port]>
+      Expires: 0
+      Event: message-summary
+      Max-Forwards: 70
+      Content-Length: 0
+
+    ]]>
+  </send>
+  <recv response="200" optional="false"> </recv>
+
+  <recv request="NOTIFY"> </recv>
+  <send crlf="true">
+    <![CDATA[
+
+      SIP/2.0 202 OK
+      [last_Via:]
+      [last_From:]
+      [last_Record-Route:]
+      [last_To:];tag=[pid]
+      [last_Call-ID:]
+      [last_CSeq:]
+      Contact: <sip:SRCNO@[local_ip]:[local_port]>
+      Content-Type: application/sdp
+      Content-Length: 0
+
+    ]]>
+  </send>
+
+
+
+
+  <pause milliseconds="15000" crlf="true"/>
+
+
+
+
+  <send retrans="500">
+    <![CDATA[
+
+      SUBSCRIBE sip:[$uac_number]@[domain]:[remote_port] SIP/2.0
+      Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
+      From: [$uac_number] <sip:[$uac_number]@[domain]:[remote_port]>;tag=[pid]
+      To: [$uac_number] <sip:[$uac_number]@[domain]:[remote_port]>
+      Call-ID: [call_id]
+      CSeq: 13 SUBSCRIBE
+      Contact: <sip:[$uac_number]@[local_ip]:[local_port]>
+      Expires: 0
+      Event: ua-profile
+      Max-Forwards: 70
+      Content-Length: 0
+
+    ]]>
+  </send>
+  <recv response="200" optional="false"> </recv>
+
+  <recv request="NOTIFY"> </recv>
+  <send crlf="true">
+    <![CDATA[
+
+      SIP/2.0 202 OK
+      [last_Via:]
+      [last_From:]
+      [last_Record-Route:]
+      [last_To:];tag=[pid]
+      [last_Call-ID:]
+      [last_CSeq:]
+      Contact: <sip:SRCNO@[local_ip]:[local_port]>
+      Content-Type: application/sdp
+      Content-Length: 0
+
+    ]]>
+  </send>
+
+
+
+
+  <send retrans="500">
+    <![CDATA[
+
+      SUBSCRIBE sip:[$uac_number]@[domain]:[remote_port] SIP/2.0
+      Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
+      From: [$uac_number] <sip:[$uac_number]@[domain]:[remote_port]>;tag=[pid]
+      To: [$uac_number] <sip:[$uac_number]@[domain]:[remote_port]>
+      Call-ID: [call_id]
+      CSeq: 15 SUBSCRIBE
+      Contact: <sip:[$uac_number]@[local_ip]:[local_port]>
+      Expires: 0
+      Event: message-summary
+      Max-Forwards: 70
+      Content-Length: 0
+
+    ]]>
+  </send>
+  <recv response="200" optional="false"> </recv>
+
+  <recv request="NOTIFY"> </recv>
+  <send crlf="true">
+    <![CDATA[
+
+      SIP/2.0 202 OK
+      [last_Via:]
+      [last_From:]
+      [last_Record-Route:]
+      [last_To:];tag=[pid]
+      [last_Call-ID:]
+      [last_CSeq:]
+      Contact: <sip:SRCNO@[local_ip]:[local_port]>
+      Content-Type: application/sdp
+      Content-Length: 0
+
+    ]]>
+  </send>
+
+
+
+
+  <!-- label: got err -->
+  <label id="got_err" />
+  <nop>
+    <action>
+      <exec int_cmd="stop_now"/>
+    </action>
+  </nop>
+
+  <!-- definition of the response time repartition table (unit is ms)   -->
+  <ResponseTimeRepartition value="10, 20, 30, 40, 50, 100, 150, 200"/>
+
+  <!-- definition of the call length repartition table (unit is ms)     -->
+  <CallLengthRepartition value="10, 50, 100, 500, 1000, 5000, 10000"/>
+
+</scenario>
