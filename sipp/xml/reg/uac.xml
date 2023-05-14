@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE scenario SYSTEM "sipp.dtd">
+
+<!-- From: uac_number, To: uac_number -->
+
+<scenario name="UAC">
+
+  <!-- variables -->
+  <nop>
+    <action>
+      <assignstr assign_to="uac_number" value="[field0 file=uac.csv]" />
+      <assignstr assign_to="uac_passwd" value="[field1 file=uac.csv]" />
+    </action>
+  </nop>
+
+
+
+
+  <!-- REGISTER -->
+  <send retrans="500">
+    <![CDATA[
+
+      REGISTER sip:[$uac_number]@[remote_ip]:[remote_port] SIP/2.0
+      Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
+      From: [$uac_number] <sip:[$uac_number]@[remote_ip]:[remote_port]>;tag=[call_number]
+      To: [$uac_number] <sip:[$uac_number]@[remote_ip]:[remote_port]>
+      Call-ID: [call_id]
+      CSeq: 1 REGISTER
+      Contact: [$uac_number] <sip:[$uac_number]@[local_ip]:[local_port]>
+      Max-Forwards: 70
+      Subject: Performance Test
+      Expires: 3600
+      Content-Type: application/sdp
+      Content-Length: [len]
+
+    ]]>
+  </send>
+
+  <recv response="405" optional="true" next="got_err"> </recv>
+
+  <recv response="401" optional="true" next="got_auth" auth="true"> </recv>
+
+  <recv response="200" optional="false" next="done_auth" crlf="true"> </recv>
+
+
+
+
+  <!-- label: got auth -->
+  <label id="got_auth" />
+
+  <!-- REGISTER auth -->
+  <send retrans="500">
+    <![CDATA[
+
+      REGISTER sip:[$uac_number]@[remote_ip]:[remote_port] SIP/2.0
+      Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
+      From: [$uac_number] <sip:[$uac_number]@[remote_ip]:[remote_port]>;tag=[call_number]
+      To: [$uac_number] <sip:[$uac_number]@[remote_ip]:[remote_port]>
+      Call-ID: [call_id]
+      CSeq: 1 REGISTER
+      Contact: [$uac_number] <sip:[$uac_number]@[local_ip]:[local_port]>
+      Max-Forwards: 70
+      [authentication username="[$uac_number]" password="[$uac_passwd]"]
+      Subject: Performance Test
+      Expires: 3600
+      Content-Type: application/sdp
+      Content-Length: [len]
+
+    ]]>
+  </send>
+
+  <recv response="405" optional="true" next="got_err"> </recv>
+
+  <recv response="401" optional="true" next="done_auth"> </recv>
+
+  <recv response="200" optional="false" next="done_all"> </recv>
+
+
+
+  <!-- label: got err -->
+  <label id="got_err" />
+  <nop>
+    <action>
+      <exec int_cmd="stop_now"/>
+    </action>
+  </nop>
+
+  <!-- label: done auth -->
+  <label id="done_auth" />
+
+  <!-- label: done all -->
+  <label id="done_all" />
+
+  <!-- definition of the response time repartition table (unit is ms)   -->
+  <ResponseTimeRepartition value="10, 20, 30, 40, 50, 100, 150, 200"/>
+
+  <!-- definition of the call length repartition table (unit is ms)     -->
+  <CallLengthRepartition value="10, 50, 100, 500, 1000, 5000, 10000"/>
+
+</scenario>

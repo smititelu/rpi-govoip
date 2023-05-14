@@ -1,0 +1,42 @@
+#!/bin/bash
+
+##################################### DEFs #####################################
+
+################################### MESSAGES ###################################
+MESSAGES=1
+MESSAGES_RATE=1
+MESSAGES_RATE_PERIOD=1000
+MESSAGES_PAUSE=3000
+
+
+################################### FILEs ######################################
+DIR_PWD=`pwd`
+DIR_CSV=$DIR_PWD/csv
+DIR_PCAP=$DIR_PWD/pcap
+DIR_XML=$DIR_PWD/xml
+
+UAC_CSV=uac.csv
+UAS_CSV=uas.csv
+
+UAC_PCAP=uac.pcap
+UAS_PCAP=uas.pcap
+
+UAC_XML=uac.xml
+UAS_XML=uas.xml
+
+
+################################## SIP/RTP ###################################
+SRV_SIP_IP=172.16.36.150
+SRV_SIP_PORT=5060
+
+UAC_SIP_IP=172.16.36.67
+UAC_SIP_PORT=1111
+
+UAS_SIP_IP=172.16.36.67
+UAS_SIP_PORT=2222
+
+UAC_RTP_IP=172.16.36.67
+UAC_RTP_PORT=3333
+
+UAS_RTP_IP=172.16.36.67
+UAS_RTP_PORT=4444
