@@ -109,3 +109,26 @@ SIPP UAC  ------->  RPI Kamailio -------> SIPP UAS
            200 OK                 200 OK
 SIPP UAC  <-------  RPI Kamailio <------- SIPP UAS
 ```
+
+
+### 3. INVITE test with SRTP (use sipp from commit b2f7d2a onwards)
+
+```
+   INVITE (crypto SDP)      INVITE (crypto SDP)
+SIPP UAC  ------->  RPI Kamailio -------> SIPP UAS
+
+   200 OK (crypto SDP)      200 OK (crypto SDP)
+SIPP UAC  <-------  RPI Kamailio <------- SIPP UAS
+
+            ACK                    ACK
+SIPP UAC  ------->  RPI Kamailio -------> SIPP UAS
+
+
+<------ SRTP (RTP with encrypted payload) ------->
+
+            BYE                    BYE
+SIPP UAC  ------->  RPI Kamailio -------> SIPP UAS
+
+           200 OK                 200 OK
+SIPP UAC  <-------  RPI Kamailio <------- SIPP UAS
+```
