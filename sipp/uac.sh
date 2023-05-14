@@ -35,7 +35,6 @@ uac_start() {
 		-sf "$DIR_TEST/$UAC_XML"		\
 		-inf "$DIR_CSV/$UAC_CSV"		\
 		-inf "$DIR_CSV/$UAS_CSV"		\
-		-key "uac_pcap" "$DIR_PCAP/$UAC_PCAP"	\
 		$SRV_SIP_IP:$SRV_SIP_PORT
 }
 
@@ -54,7 +53,6 @@ uac_start_bg() {
 		-sf "$DIR_TEST/$UAC_XML"		\
 		-inf "$DIR_CSV/$UAC_CSV"		\
 		-inf "$DIR_CSV/$UAS_CSV"		\
-		-key "uac_pcap" "$DIR_PCAP/$UAC_PCAP"	\
 		$SRV_SIP_IP:$SRV_SIP_PORT &> /dev/null &
 }
 

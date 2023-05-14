@@ -12,14 +12,10 @@ MESSAGES_PAUSE=3000
 ################################### FILEs ######################################
 DIR_PWD=`pwd`
 DIR_CSV=$DIR_PWD/csv
-DIR_PCAP=$DIR_PWD/pcap
 DIR_XML=$DIR_PWD/xml
 
 UAC_CSV=uac.csv
 UAS_CSV=uas.csv
-
-UAC_PCAP=uac.pcap
-UAS_PCAP=uas.pcap
 
 UAC_XML=uac.xml
 UAS_XML=uas.xml

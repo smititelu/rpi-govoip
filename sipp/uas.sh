@@ -34,7 +34,6 @@ uas_start() {
 		-mi $UAS_RTP_IP -mp $UAS_RTP_PORT	\
 		-sf "$DIR_TEST/$UAS_XML"		\
 		-inf "$DIR_CSV/$UAS_CSV"		\
-		-key "uas_pcap" "$DIR_PCAP/$UAS_PCAP"   \
 		$SRV_SIP_IP:$SRV_SIP_PORT
 }
 
@@ -52,7 +51,6 @@ uas_start_bg() {
 		-mi $UAS_RTP_IP -mp $UAS_RTP_PORT	\
 		-sf "$DIR_TEST/$UAS_XML"		\
 		-inf "$DIR_CSV/$UAS_CSV"		\
-		-key "uas_pcap" "$DIR_PCAP/$UAS_PCAP"   \
 		$SRV_SIP_IP:$SRV_SIP_PORT &> /dev/null &
 }
 
