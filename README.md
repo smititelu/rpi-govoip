@@ -55,13 +55,13 @@ sudo apt-get install ngcp-rtpengine
 ### 1. Kamailio
 Built `.deb`s with all modules.
 
-- kamailio 5.5.0 -> 5.5 branch at commit 97f9ede
+- kamailio 5.6.1 -> 5.6 branch at commit d8f98b8
 
 
 ### 2. RTPEngine
 Built `.deb`s with all modules.
 
-- rtpengine 9.5.0.0 -> master branch at commit 830abd6
+- rtpengine 11.1.0.0 -> master branch at commit b1242be
 
 
 ### 3. bcg
