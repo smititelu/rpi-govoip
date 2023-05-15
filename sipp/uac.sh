@@ -32,6 +32,7 @@ uac_start() {
 		-m $MESSAGES				\
 		-i $UAC_SIP_IP -p $UAC_SIP_PORT		\
 		-mi $UAC_RTP_IP                         \
+		-min_rtp_port $UAC_RTP_PORT_MIN -max_rtp_port $UAC_RTP_PORT_MAX \
 		-sf "$DIR_TEST/$UAC_XML"		\
 		-inf "$DIR_CSV/$UAC_CSV"		\
 		-inf "$DIR_CSV/$UAS_CSV"		\
@@ -51,6 +52,7 @@ uac_start_bg() {
 		-m $MESSAGES				\
 		-i $UAC_SIP_IP -p $UAC_SIP_PORT		\
 		-mi $UAC_RTP_IP                         \
+		-min_rtp_port $UAC_RTP_PORT_MIN -max_rtp_port $UAC_RTP_PORT_MAX \
 		-sf "$DIR_TEST/$UAC_XML"		\
 		-inf "$DIR_CSV/$UAC_CSV"		\
 		-inf "$DIR_CSV/$UAS_CSV"		\

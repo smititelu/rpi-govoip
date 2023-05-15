@@ -32,6 +32,7 @@ uas_start() {
 		-m $MESSAGES				\
 		-i $UAS_SIP_IP -p $UAS_SIP_PORT		\
 		-mi $UAS_RTP_IP				\
+		-min_rtp_port $UAS_RTP_PORT_MIN -max_rtp_port $UAS_RTP_PORT_MAX	\
 		-sf "$DIR_TEST/$UAS_XML"		\
 		-inf "$DIR_CSV/$UAS_CSV"		\
 		-rtp_echo				\
@@ -50,6 +51,7 @@ uas_start_bg() {
 		-m $MESSAGES				\
 		-i $UAS_SIP_IP -p $UAS_SIP_PORT		\
 		-mi $UAS_RTP_IP				\
+		-min_rtp_port $UAS_RTP_PORT_MIN -max_rtp_port $UAS_RTP_PORT_MAX	\
 		-sf "$DIR_TEST/$UAS_XML"		\
 		-inf "$DIR_CSV/$UAS_CSV"		\
 		-rtp_echo				\
