@@ -130,7 +130,7 @@
   <label id="done_auth" />
 
   <!-- pause -->
-  <pause milliseconds="1000"/>
+  <pause milliseconds="500"/>
 
   <!-- ACK -->
   <send crlf="true">
@@ -187,7 +187,7 @@
   <label id="got_error"/>
 
   <!-- pause -->
-  <pause milliseconds="1000"/>
+  <pause milliseconds="500"/>
 
   <send crlf="true">
     <![CDATA[
