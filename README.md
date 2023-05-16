@@ -109,6 +109,8 @@ SIPP UAC/UAS  <-------  RPI Kamailio
 ```
 
 
+
+
 ##### 2. INVITE test without media
 
 ```
@@ -134,6 +136,8 @@ SIPP UAC  ------->  RPI Kamailio -------> SIPP UAS
            200 OK                 200 OK
 SIPP UAC  <-------  RPI Kamailio <------- SIPP UAS
 ```
+
+
 
 
 ##### 3. INVITE test with RTP media (use SIPP from commit b2f7d2a onwards)
@@ -163,6 +167,8 @@ SIPP UAC  <-------  RPI Kamailio <------- SIPP UAS
 ```
 
 
+
+
 ##### 4. INVITE test with SRTP media (use SIPP from commit b2f7d2a onwards)
 
 ```
@@ -189,7 +195,15 @@ SIPP UAC  ------->  RPI Kamailio -------> SIPP UAS
 SIPP UAC  <-------  RPI Kamailio <------- SIPP UAS
 ```
 
+
+
+
 ##### 5. SUBSCRIBE/NOTIFY test
+```
+./uas.sh xml/sub/
+./uac.sh xml/sub/
+```
+
 ```
          SUBSCRIBE
 SIPP UAC  ------->  RPI Kamailio

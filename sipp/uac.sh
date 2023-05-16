@@ -2,7 +2,9 @@
 
 source defines
 
-# UAS functions
+ulimit -Sn 55000
+
+# UAC functions
 uac_check() {
 	# UAC params
 	if ! [ $# -eq 1 ]; then

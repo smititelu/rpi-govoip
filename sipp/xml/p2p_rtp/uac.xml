@@ -60,21 +60,9 @@
   <recv response="180" optional="true"> </recv>
   <recv response="183" optional="true"> </recv>
 
-  <recv response="400" optional="true" rrs="true" next="got_error"> </recv>
-  <recv response="401" optional="true" rrs="true" next="got_error"> </recv>
-  <recv response="403" optional="true" rrs="true" next="got_error"> </recv>
-  <recv response="404" optional="true" rrs="true" next="got_error"> </recv>
-  <recv response="405" optional="true" rrs="true" next="got_error"> </recv>
-  <recv response="406" optional="true" rrs="true" next="got_error"> </recv>
-  <recv response="482" optional="true" rrs="true" next="got_error"> </recv>
-  <recv response="483" optional="true" rrs="true" next="got_error"> </recv>
-  <recv response="486" optional="true" rrs="true" next="got_error"> </recv>
-
-  <recv response="500" optional="true" rrs="true" next="got_error"> </recv>
-  <recv response="503" optional="true" rrs="true" next="got_error"> </recv>
-
-  <recv response="407" optional="true" rrs="true" next="got_auth" auth="true"> </recv>
-  <recv response="200" optional="false" rrs="true" next="done_auth" crlf="true"> </recv>
+  <recv response="408" optional="true" next="got_error"> </recv>
+  <recv response="407" optional="true" next="got_auth" auth="true"> </recv>
+  <recv response="200" optional="false" next="done_auth" crlf="true" rrs="true"> </recv>
 
 
 
@@ -123,21 +111,9 @@
   <recv response="180" optional="true"> </recv>
   <recv response="183" optional="true"> </recv>
 
-  <recv response="400" optional="true" rrs="true" next="got_error"> </recv>
-  <recv response="401" optional="true" rrs="true" next="got_error"> </recv>
-  <recv response="403" optional="true" rrs="true" next="got_error"> </recv>
-  <recv response="404" optional="true" rrs="true" next="got_error"> </recv>
-  <recv response="405" optional="true" rrs="true" next="got_error"> </recv>
-  <recv response="406" optional="true" rrs="true" next="got_error"> </recv>
-  <recv response="482" optional="true" rrs="true" next="got_error"> </recv>
-  <recv response="483" optional="true" rrs="true" next="got_error"> </recv>
-  <recv response="486" optional="true" rrs="true" next="got_error"> </recv>
-
-  <recv response="500" optional="true" rrs="true" next="got_error"> </recv>
-  <recv response="503" optional="true" rrs="true" next="got_error"> </recv>
-
-  <recv response="407" optional="true" rrs="true" next="got_auth" auth="true"> </recv>
-  <recv response="200" optional="false" rrs="true" next="done_auth" crlf="true"> </recv>
+  <recv response="408" optional="true" next="got_error"> </recv>
+  <recv response="407" optional="true" next="got_error"> </recv>
+  <recv response="200" optional="false" next="done_auth" crlf="true" rrs="true"> </recv>
 
 
 
@@ -171,7 +147,7 @@
 
   <nop>
     <action>
-      <exec rtp_stream="apattern,1,0,PCMU/8000" />
+      <exec play_pcap_audio="long.pcap"/>
     </action>
   </nop>
 
@@ -227,12 +203,6 @@
 
     ]]>
   </send>
-
-  <nop>
-    <action>
-      <exec int_cmd="stop_now"/>
-    </action>
-  </nop>
 
 
 
