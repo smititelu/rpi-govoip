@@ -2,7 +2,7 @@
 
 source defines
 
-ulimit -Sn 55000
+#ulimit -Sn 55000
 
 # UAC functions
 uac_check() {
@@ -38,7 +38,7 @@ uac_start() {
 		-sf "$DIR_TEST/$UAC_XML"		\
 		-inf "$DIR_CSV/$UAC_CSV"		\
 		-inf "$DIR_CSV/$UAS_CSV"		\
-		-key custom_event message-summary -t un	\
+		-key custom_event message-summary	\
 		$SRV_SIP_IP:$SRV_SIP_PORT
 }
 
@@ -58,7 +58,7 @@ uac_start_bg() {
 		-sf "$DIR_TEST/$UAC_XML"		\
 		-inf "$DIR_CSV/$UAC_CSV"		\
 		-inf "$DIR_CSV/$UAS_CSV"		\
-		-key custom_event message-summary -t un	\
+		-key custom_event message-summary	\
 		$SRV_SIP_IP:$SRV_SIP_PORT &> /dev/null &
 }
 

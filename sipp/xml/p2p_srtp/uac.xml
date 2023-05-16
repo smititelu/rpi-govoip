@@ -123,9 +123,6 @@
   <!-- label: done auth -->
   <label id="done_auth" />
 
-  <!-- pause -->
-  <pause milliseconds="500"/>
-
   <!-- ACK -->
   <send crlf="true">
     <![CDATA[
@@ -178,6 +175,7 @@
       ]]>
   </send>
 
+  <recv response="408" optional="true" next="got_error"> </recv>
   <recv response="200" optional="false" next="done_all" crlf="true"> </recv>
 
 
@@ -185,9 +183,6 @@
 
   <!-- label: got error -->
   <label id="got_error"/>
-
-  <!-- pause -->
-  <pause milliseconds="500"/>
 
   <send crlf="true">
     <![CDATA[

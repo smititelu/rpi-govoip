@@ -38,6 +38,7 @@
   </send>
 
   <recv response="405" optional="true" next="got_err"> </recv>
+  <recv response="408" optional="true" next="got_err"> </recv>
   <recv response="401" optional="true" next="got_auth" auth="true"> </recv>
   <recv response="200" optional="false" next="done_auth" crlf="true"> </recv>
 
@@ -69,7 +70,8 @@
   </send>
 
   <recv response="405" optional="true" next="got_err"> </recv>
-  <recv response="401" optional="true" next="done_auth"> </recv>
+  <recv response="408" optional="true" next="got_err"> </recv>
+  <recv response="401" optional="true" next="got_err"> </recv>
   <recv response="200" optional="false" next="done_all"> </recv>
 
 
@@ -77,11 +79,6 @@
 
   <!-- label: got err -->
   <label id="got_err" />
-  <nop>
-    <action>
-      <exec int_cmd="stop_now"/>
-    </action>
-  </nop>
 
   <!-- label: done auth -->
   <label id="done_auth" />
