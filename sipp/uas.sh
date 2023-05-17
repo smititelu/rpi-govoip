@@ -1,23 +1,30 @@
 #!/bin/bash
 
-source defines
+#ulimit -Sn 55000
 
 # UAS functions
 uas_check() {
         # UAS params
-        if ! [ $# -eq 1 ]; then
-                echo "Usage: ./uas.sh [test_path_directory]"
-                echo "Eg:    ./uas.sh xml/reg/"
+	if [ $# -lt 1 ] || [ $# -gt 2 ]; then
+		echo "Usage: ./uas.sh test_path_directory [optional_definesX_file]"
+                echo "Eg:    ./uas.sh xml/reg/ 2"
                 exit -1
         fi
 
         # UAS TEST PATH
         if ! [ -d "$1" ]; then
                 echo "Error: $1 is not a directory!"
-                echo "Usage: ./uas.sh [test_path_directory]"
-                echo "Eg:    ./uas.sh xml/reg/"
+                echo "Usage: ./uas.sh test_path_directory [optional_definesX_file"
+                echo "Eg:    ./uas.sh xml/reg/ 3"
                 exit -1
         fi
+
+	# UAS defines
+	if [ $# -eq 2 ]; then
+		source defines$2
+	else
+		source defines
+	fi
 }
 
 uas_start() {

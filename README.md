@@ -40,7 +40,7 @@ sudo apt-get install ngcp-rtpengine
 ### 1. Kamailio
 Built `.deb`s with all modules.
 
-- kamailio 5.7.0 -> 5.7 branch at commit 5f3ed08
+- kamailio 5.7.0 -> 5.7 branch at commit a651304
 
 
 ### 2. RTPEngine
@@ -53,6 +53,12 @@ Built `.deb`s with all modules.
 Built `.deb`s with bcg lib.
 
 - bcg 1.0.4
+
+
+### 4. OpenSIPS
+Built `.deb`s with all modules.
+
+- opensips 3.3.5-1 -> 3.3 branch at commit b0465ca
 
 
 <br />
