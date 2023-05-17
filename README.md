@@ -1,4 +1,4 @@
-# rpi govoip
+# RPI
 Overclocked raspberry pi 4 running raspbian buster with a Sandisk U1 MicroSD card.
 
 ```
@@ -8,13 +8,13 @@ Raspbian GNU/Linux 11 \n \l
 
 ```
 pi@raspberrypi:~ $ uname -a
-Linux pisip 5.4.51-v7+ #1327 SMP Thu Jul 23 10:58:46 BST 2020 armv7l GNU/Linux
+Linux pisip.govoip.ro 6.1.21-v7l+ #1639 SMP Fri Mar 24 16:59:30 GMT 2023 armv7l GNU/Linux
 ```
 
 <br />
 <br />
 
-# rpi govoip repo
+# RPI repo
 Add repo key:
 
 ```
@@ -37,27 +37,19 @@ sudo apt-get install ngcp-rtpengine
 ```
 
 
-### 1. Kamailio
-Built `.deb`s with all modules.
-
+### 1. Kamailio `.deb`s
 - kamailio 5.7.0 -> 5.7 branch at commit a651304
 
 
-### 2. RTPEngine
-Built `.deb`s with all modules.
-
+### 2. RTPEngine `.deb`s
 - rtpengine 11.4.0.0 -> master branch at commit 13a7e1d
 
 
-### 3. bcg
-Built `.deb`s with bcg lib.
-
+### 3. bcg `.deb`s
 - bcg 1.0.4
 
 
-### 4. OpenSIPS
-Built `.deb`s with all modules.
-
+### 4. OpenSIPS `.deb`s
 - opensips 3.3.5-1 -> 3.3 branch at commit b0465ca
 
 
@@ -65,7 +57,7 @@ Built `.deb`s with all modules.
 <br />
 
 
-# rpi govoip test
+# RPI test
 
 ### Test configuration
 ```
@@ -92,20 +84,25 @@ Built `.deb`s with all modules.
         │   └── uas.xml			-> ... for uas
         └── sub			-> SUBSCRIBE test xml
             └── uac.xml			-> ... for uac
-
-
-ulimit -Sn 55000
 ```
 
 
 ### Test run
-##### 1. REGISTER test
-
 ```
 ./uas.sh xml/reg/
 ./uac.sh xml/reg/
+...
+./uas.sh xml/p2p_srtp/
+./uac.sh xml/p2p_srtp/
+...
+./uas.sh xml/sub/
+./uac.sh xml/sub/
+...
 ```
 
+<br />
+
+##### 1. REGISTER test
 ```
               REGISTER
 SIPP UAC/UAS  ------->  RPI Kamailio
@@ -114,16 +111,9 @@ SIPP UAC/UAS  ------->  RPI Kamailio
 SIPP UAC/UAS  <-------  RPI Kamailio
 ```
 
-
-
+<br />
 
 ##### 2. INVITE test without media
-
-```
-./uas.sh xml/p2p/
-./uac.sh xml/p2p/
-```
-
 ```
            INVITE                 INVITE
 SIPP UAC  ------->  RPI Kamailio -------> SIPP UAS
@@ -143,16 +133,9 @@ SIPP UAC  ------->  RPI Kamailio -------> SIPP UAS
 SIPP UAC  <-------  RPI Kamailio <------- SIPP UAS
 ```
 
-
-
+<br />
 
 ##### 3. INVITE test with RTP media (use SIPP from commit b2f7d2a onwards)
-
-```
-./uas.sh xml/p2p\_rtp/
-./uac.sh xml/p2p\_rtp/
-```
-
 ```
            INVITE                 INVITE
 SIPP UAC  ------->  RPI Kamailio -------> SIPP UAS
@@ -172,16 +155,9 @@ SIPP UAC  ------->  RPI Kamailio -------> SIPP UAS
 SIPP UAC  <-------  RPI Kamailio <------- SIPP UAS
 ```
 
-
-
+<br />
 
 ##### 4. INVITE test with SRTP media (use SIPP from commit b2f7d2a onwards)
-
-```
-./uas.sh xml/p2p\_srtp/
-./uac.sh xml/p2p\_srtp/
-```
-
 ```
    INVITE (crypto SDP)      INVITE (crypto SDP)
 SIPP UAC  ------->  RPI Kamailio -------> SIPP UAS
@@ -201,15 +177,9 @@ SIPP UAC  ------->  RPI Kamailio -------> SIPP UAS
 SIPP UAC  <-------  RPI Kamailio <------- SIPP UAS
 ```
 
-
-
+<br />
 
 ##### 5. SUBSCRIBE/NOTIFY test
-```
-./uas.sh xml/sub/
-./uac.sh xml/sub/
-```
-
 ```
          SUBSCRIBE
 SIPP UAC  ------->  RPI Kamailio
