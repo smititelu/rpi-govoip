@@ -38,19 +38,15 @@ sudo apt-get install ngcp-rtpengine
 
 
 ### 1. Kamailio `.deb`s
-- kamailio 5.7.0 -> 5.7 branch at commit a651304
+- kamailio 5.7.0 -> 5.7 branch at commit 1c23c2f
 
 
 ### 2. RTPEngine `.deb`s
-- rtpengine 11.4.0.0 -> master branch at commit 13a7e1d
+- rtpengine 11.4.0.0 -> master branch at commit 3760c8d
 
 
-### 3. bcg `.deb`s
-- bcg 1.0.4
-
-
-### 4. OpenSIPS `.deb`s
-- opensips 3.3.5-1 -> 3.3 branch at commit b0465ca
+### 3. OpenSIPs `.deb`s
+- opensips 3.4.0 -> 3.4 branch at commit deeefa7
 
 
 <br />
@@ -61,29 +57,39 @@ sudo apt-get install ngcp-rtpengine
 
 ### Test configuration
 ```
+.
 ├── README.md
 └── sipp
     ├── csv		-> SIPP configured users and passwords
-    │   ├── uac.csv		-> ... for uac
-    │   └── uas.csv		-> ... for uas
+    │   ├── uac.csv
+    │   └── uas.csv
     ├── defines		-> SIPP configured parameters and IPs
+    ├── defines1
+    ├── defines2
+    ├── defines3
+    ├── defines4
     ├── uac.sh		-> script for running uac
     ├── uas.sh		-> script for running uas
-    └── xml		-> SIPP xml scenarios
-        ├── p2p			-> INVITE test without media xml
-        │   ├── uac.xml			-> ... for uac
-        │   └── uas.xml			-> ... for uas
-        ├── p2p_rtp		-> INVITE test with RTP media xml
-        │   ├── uac.xml			-> ... for uac
-        │   └── uas.xml			-> ... for uas
-        ├── p2p_srtp		-> INVITE test with SRTP media xml
-        │   ├── uac.xml			-> ... for uac
-        │   └── uas.xml			-> ... for uas
-        ├── reg			-> REGISTER test xml
-        │   ├── uac.xml			-> ... for uac
-        │   └── uas.xml			-> ... for uas
-        └── sub			-> SUBSCRIBE test xml
-            └── uac.xml			-> ... for uac
+    └── xml		-> SIPP xml sceanrios
+        ├── p2p			-> INVITE test without RTP
+        │   ├── uac.xml
+        │   └── uas.xml
+        ├── p2p_rtp		-> INVITE test with RTP
+        │   ├── long.pcap
+        │   ├── uac.xml
+        │   └── uas.xml
+        ├── p2p_rtp_reinvite	-> INVITE test with RTP and RE-INVITE with RTP
+        │   ├── long.pcap
+        │   ├── uac.xml
+        │   └── uas.xml
+        ├── p2p_srtp		-> INVITE test with SRTP
+        │   ├── uac.xml
+        │   └── uas.xml
+        ├── reg			-> REGISTER test
+        │   ├── uac.xml
+        │   └── uas.xml
+        └── sub			-> SUBSCRIBE/NOTIFY test
+            └── uac.xml
 ```
 
 
@@ -95,7 +101,6 @@ sudo apt-get install ngcp-rtpengine
 ./uas.sh xml/p2p_srtp/
 ./uac.sh xml/p2p_srtp/
 ...
-./uas.sh xml/sub/
 ./uac.sh xml/sub/
 ...
 ```
@@ -105,88 +110,66 @@ sudo apt-get install ngcp-rtpengine
 ##### 1. REGISTER test
 ```
               REGISTER
-SIPP UAC/UAS  ------->  RPI Kamailio
+SIPP UAC/UAS  ------->  RPI SIP SERVER
 
                200 OK
-SIPP UAC/UAS  <-------  RPI Kamailio
+SIPP UAC/UAS  <-------  RPI SIP SERVER
 ```
 
 <br />
 
 ##### 2. INVITE test without media
 ```
-           INVITE                 INVITE
-SIPP UAC  ------->  RPI Kamailio -------> SIPP UAS
+           INVITE                   INVITE
+SIPP UAC  ------->  RPI SIP SERVER -------> SIPP UAS
 
-           200 OK                 200 OK
-SIPP UAC  <-------  RPI Kamailio <------- SIPP UAS
+           200 OK                   200 OK
+SIPP UAC  <-------  RPI SIP SERVER <------- SIPP UAS
 
-            ACK                    ACK
-SIPP UAC  ------->  RPI Kamailio -------> SIPP UAS
+            ACK                      ACK
+SIPP UAC  ------->  RPI SIP SERVER -------> SIPP UAS
 
 <-------------------- Pause --------------------->
 
-            BYE                    BYE
-SIPP UAC  ------->  RPI Kamailio -------> SIPP UAS
+            BYE                      BYE
+SIPP UAC  ------->  RPI SIP SERVER -------> SIPP UAS
 
-           200 OK                 200 OK
-SIPP UAC  <-------  RPI Kamailio <------- SIPP UAS
+           200 OK                   200 OK
+SIPP UAC  <-------  RPI SIP SERVER <------- SIPP UAS
 ```
 
 <br />
 
-##### 3. INVITE test with RTP media (use SIPP from commit b2f7d2a onwards)
+##### 3. INVITE test with RTP media
 ```
-           INVITE                 INVITE
-SIPP UAC  ------->  RPI Kamailio -------> SIPP UAS
-
-           200 OK                 200 OK
-SIPP UAC  <-------  RPI Kamailio <------- SIPP UAS
-
-            ACK                    ACK
-SIPP UAC  ------->  RPI Kamailio -------> SIPP UAS
-
-<--------------------- RTP ---------------------->
-
-            BYE                    BYE
-SIPP UAC  ------->  RPI Kamailio -------> SIPP UAS
-
-           200 OK                 200 OK
-SIPP UAC  <-------  RPI Kamailio <------- SIPP UAS
+Same as 2. but with RTP instead of Pause
 ```
 
 <br />
 
 ##### 4. INVITE test with SRTP media (use SIPP from commit b2f7d2a onwards)
 ```
-   INVITE (crypto SDP)      INVITE (crypto SDP)
-SIPP UAC  ------->  RPI Kamailio -------> SIPP UAS
-
-   200 OK (crypto SDP)      200 OK (crypto SDP)
-SIPP UAC  <-------  RPI Kamailio <------- SIPP UAS
-
-            ACK                    ACK
-SIPP UAC  ------->  RPI Kamailio -------> SIPP UAS
-
-<------ SRTP (RTP with encrypted payload) ------->
-
-            BYE                    BYE
-SIPP UAC  ------->  RPI Kamailio -------> SIPP UAS
-
-           200 OK                 200 OK
-SIPP UAC  <-------  RPI Kamailio <------- SIPP UAS
+Same as 2. but with SRTP instead of Pause
 ```
 
 <br />
 
-##### 5. SUBSCRIBE/NOTIFY test
+##### 5. RE-INVITE test with RTP media
 ```
-         SUBSCRIBE
-SIPP UAC  ------->  RPI Kamailio
+Same as 2. but with RTP instead of Pause and Re-INVITE updates UAC RTP port.
+RTP media continues to be sent after RE-INVITE on new UAC port
+```
+
+<br />
+
+##### 6. SUBSCRIBE/NOTIFY test
+```
+          SUBSCRIBE
+SIPP UAC  -------->  RPI SIP SERVER
            200 OK
-SIPP UAC  <-------  RPI Kamailio
+SIPP UAC  <--------  RPI SIP SERVER
            NOTIFY
-SIPP UAC  <-------  RPI Kamailio
+SIPP UAC  <--------  RPI SIP SERVER
            200 OK
-SIPP UAC  ------->  RPI Kamailio
+SIPP UAC  -------->  RPI SIP SERVER
 ```
