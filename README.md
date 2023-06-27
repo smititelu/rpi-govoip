@@ -82,6 +82,11 @@ sudo apt-get install ngcp-rtpengine
         │   ├── long.pcap
         │   ├── uac.xml
         │   └── uas.xml
+        ├── p2p_rtp_reinvite_t38_rtp	-> INVITE test with RTP and RE-INVITE with T38<->RTP
+        │   ├── long.pcap
+        │   ├── t38.pcap
+        │   ├── uac.xml
+        │   └── uas.xml
         ├── p2p_srtp		-> INVITE test with SRTP
         │   ├── uac.xml
         │   └── uas.xml
@@ -156,13 +161,22 @@ Same as 2. but with SRTP instead of Pause
 
 ##### 5. RE-INVITE test with RTP media
 ```
-Same as 2. but with RTP instead of Pause and Re-INVITE updates UAC RTP port.
+Same as 2. but with RTP instead of Pause and RE-INVITE updates UAC RTP port.
 RTP media continues to be sent after RE-INVITE on new UAC port
 ```
 
 <br />
 
-##### 6. SUBSCRIBE/NOTIFY test
+##### 6. RE-INVITE test with T38<->RTP media
+```
+Same as 2. but with RTP instead of Pause and RE-INVITE updates UAC RTP port.
+After RE-INVITE, media will flow:
+UAC <---T38---> RPI RTP SERVER <---RTP---> UAS
+```
+
+<br />
+
+##### 7. SUBSCRIBE/NOTIFY test
 ```
           SUBSCRIBE
 SIPP UAC  -------->  RPI SIP SERVER

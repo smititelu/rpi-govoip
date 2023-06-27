@@ -49,7 +49,7 @@
       From: [$uac_number] <sip:[$uac_number]@[$uac_domain]>;tag=[pid]
       To: [$uac_number] <sip:[$uac_number]@[$uac_domain]>
       Call-ID: [call_id]
-      CSeq: 1 SUBSCRIBE
+      CSeq: 2 SUBSCRIBE
       Contact: <sip:[$uac_number]@[local_ip]:[local_port]>
       Expires: 2000
       Event: [custom_event]
@@ -62,8 +62,8 @@
 
   <recv response="489" optional="true" next="got_err"> </recv>
   <recv response="404" optional="true" next="got_err"> </recv>
-  <recv response="407" optional="true" next="done_auth"> </recv>
-  <recv response="200" optional="false" next="done_all" crlf="true"> </recv>
+  <recv response="407" optional="true" next="got_err"> </recv>
+  <recv response="200" optional="false" next="done_auth" crlf="true"> </recv>
 
 
 
@@ -94,9 +94,6 @@
 
 
 
-
-  <!-- label: done all -->
-  <label id="done_all" />
 
   <!-- label: got err -->
   <label id="got_err" />
