@@ -167,16 +167,34 @@ RTP media continues to be sent after RE-INVITE on new UAC port
 
 <br />
 
-##### 6. RE-INVITE test with T38<->RTP media
+##### 6. RE-INVITE test with T38<->T38 media
 ```
-Same as 2. but with RTP instead of Pause and RE-INVITE updates UAC RTP port.
+Same as 2. but with RTP instead of Pause and RE-INVITE updates UAC/UAS media port.
+After RE-INVITE, media will flow:
+UAC <---T38---> RPI RTP SERVER <---T38---> UAS
+```
+
+<br />
+
+##### 7. RE-INVITE test with T38<->RTP media
+```
+Same as 2. but with RTP instead of Pause and RE-INVITE updates UAC/UAS media port.
 After RE-INVITE, media will flow:
 UAC <---T38---> RPI RTP SERVER <---RTP---> UAS
 ```
 
 <br />
 
-##### 7. SUBSCRIBE/NOTIFY test
+##### 8. RE-INVITE test with T38<->SRTP media
+```
+Same as 2. but with SRTP instead of Pause and RE-INVITE updates UAC/UAS media port.
+After RE-INVITE, media will flow:
+UAC <---T38---> RPI RTP SERVER <---SRTP---> UAS
+```
+
+<br />
+
+##### 9. SUBSCRIBE/NOTIFY test
 ```
           SUBSCRIBE
 SIPP UAC  -------->  RPI SIP SERVER

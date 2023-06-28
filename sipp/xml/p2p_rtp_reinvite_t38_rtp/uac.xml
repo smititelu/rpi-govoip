@@ -139,7 +139,7 @@
     </action>
   </nop>
 
-  <pause milliseconds="5000" crlf="true"/>
+  <pause milliseconds="2000" crlf="true"/>
 
 
 
