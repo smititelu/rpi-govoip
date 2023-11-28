@@ -33,6 +33,7 @@
       Contact: <sip:[$uac_number]@[local_ip]:[local_port]>
       Max-Forwards: 70
       Content-Type: application/sdp
+      AccountCode: stefan
       Content-Length:[len]
 
       v=0
@@ -84,6 +85,7 @@
       Max-Forwards: 70
       [authentication username="[$uac_number]" password="[$uac_passwd]"]
       Content-Type: application/sdp
+      AccountCode: stefan
       Content-Length:[len]
 
       v=0
@@ -144,7 +146,7 @@
 
   <nop>
     <action>
-      <exec play_pcap_audio="long.pcap"/>
+      <exec play_pcap_audio="short.pcap"/>
     </action>
   </nop>
 
