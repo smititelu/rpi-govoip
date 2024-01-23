@@ -26,7 +26,7 @@
       From: <sip:[$uac_number]@[$uac_domain]>;tag=[pid]
       To: <sip:[$uac_number]@[$uac_domain]>
       Call-ID: [call_id]
-      CSeq: 1 REGISTER
+      CSeq: [cseq] REGISTER
       Contact: <sip:[$uac_number]@[local_ip]:[local_port]>
       Max-Forwards: 70
       Subject: Performance Test
@@ -57,7 +57,7 @@
       From: <sip:[$uac_number]@[$uac_domain]>;tag=[pid]
       To: <sip:[$uac_number]@[$uac_domain]>
       Call-ID: [call_id]
-      CSeq: 1 REGISTER
+      CSeq: [cseq] REGISTER
       Contact: <sip:[$uac_number]@[local_ip]:[local_port]>
       Max-Forwards: 70
       [authentication username="2999999999:[$uac_number]" password="[$uac_passwd]"]

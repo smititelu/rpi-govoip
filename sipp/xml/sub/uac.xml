@@ -22,7 +22,7 @@
       From: [$uac_number] <sip:[$uac_number]@[$uac_domain]>;tag=[pid]
       To: [$uac_number] <sip:[$uac_number]@[$uac_domain]>
       Call-ID: [call_id]
-      CSeq: 1 SUBSCRIBE
+      CSeq: [cseq] SUBSCRIBE
       Contact: <sip:[$uac_number]@[local_ip]:[local_port]>
       Expires: 2000
       Event: [custom_event]
@@ -49,7 +49,7 @@
       From: [$uac_number] <sip:[$uac_number]@[$uac_domain]>;tag=[pid]
       To: [$uac_number] <sip:[$uac_number]@[$uac_domain]>
       Call-ID: [call_id]
-      CSeq: 2 SUBSCRIBE
+      CSeq: [cseq] SUBSCRIBE
       Contact: <sip:[$uac_number]@[local_ip]:[local_port]>
       Expires: 2000
       Event: [custom_event]

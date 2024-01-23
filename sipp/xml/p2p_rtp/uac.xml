@@ -83,7 +83,7 @@
       CSeq: [cseq] INVITE
       Contact: <sip:[$uac_number]@[local_ip]:[local_port]>
       Max-Forwards: 70
-      [authentication username="2999999999:[$uac_number]" password="[$uac_passwd]"]
+      [authentication username="[$uac_number]" password="[$uac_passwd]"]
       Content-Type: application/sdp
       AccountCode: stefan
       Content-Length:[len]
