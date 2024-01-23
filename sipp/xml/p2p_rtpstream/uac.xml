@@ -21,7 +21,7 @@
 
 
   <!-- INVITE -->
-  <send retrans="500">
+  <send retrans="1500">
     <![CDATA[
 
       INVITE sip:[$uas_number]@[$uas_domain] SIP/2.0
@@ -71,7 +71,7 @@
   <label id="got_auth" />
 
   <!-- INVITE auth -->
-  <send retrans="500">
+  <send retrans="1500">
     <![CDATA[
 
       INVITE sip:[$uas_number]@[$uas_domain] SIP/2.0
@@ -155,7 +155,7 @@
 
 
   <!-- BYE -->
-  <send retrans="500">
+  <send retrans="1500">
     <![CDATA[
 
       BYE [next_url] SIP/2.0

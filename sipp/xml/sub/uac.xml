@@ -14,7 +14,7 @@
     </action>
   </nop>
 
-  <send retrans="500">
+  <send retrans="1500">
     <![CDATA[
 
       SUBSCRIBE sip:[$uac_number]@[$uac_domain] SIP/2.0
@@ -41,7 +41,7 @@
   <!-- label: got auth -->
   <label id="got_auth" />
 
-  <send retrans="500">
+  <send retrans="1500">
     <![CDATA[
 
       SUBSCRIBE sip:[$uac_number]@[$uac_domain] SIP/2.0

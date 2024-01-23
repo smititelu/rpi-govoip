@@ -18,7 +18,7 @@
 
 
   <!-- REGISTER -->
-  <send retrans="500">
+  <send retrans="1500">
     <![CDATA[
 
       REGISTER sip:[$uac_number]@[$uac_domain] SIP/2.0
@@ -49,7 +49,7 @@
   <label id="got_auth" />
 
   <!-- REGISTER auth -->
-  <send retrans="500">
+  <send retrans="1500">
     <![CDATA[
 
       REGISTER sip:[$uac_number]@[$uac_domain] SIP/2.0
