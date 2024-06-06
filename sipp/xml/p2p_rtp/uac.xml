@@ -71,6 +71,24 @@
   <!-- label: got auth -->
   <label id="got_auth" />
 
+  <!-- ACK -->
+  <send crlf="true">
+    <![CDATA[
+
+      ACK sip:[$uas_number]@[$uas_domain] SIP/2.0
+      Via: SIP/2.0/[transport] [local_ip]:[local_port]
+      From: <sip:[$uac_number]@[$uac_domain]>;tag=[pid]
+      To: <sip:[$uas_number]@[$uas_domain]>[peer_tag_param]
+      [routes]
+      Call-ID: [call_id]
+      CSeq: [cseq] ACK
+      Contact: <sip:[$uac_number]@[local_ip]:[local_port]>
+      Max-Forwards: 70
+      Content-Length: 0
+
+    ]]>
+  </send>
+
   <!-- INVITE auth -->
   <send retrans="1500">
     <![CDATA[

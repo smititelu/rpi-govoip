@@ -45,7 +45,7 @@ uac_start() {
 		-inf "$DIR_CSV/$UAC_CSV"		\
 		-inf "$DIR_CSV/$UAS_CSV"		\
 		-key custom_event message-summary	\
-		-t un					\
+		-t u1					\
 		$SRV_SIP_IP:$SRV_SIP_PORT
 }
 
@@ -66,7 +66,7 @@ uac_start_bg() {
 		-inf "$DIR_CSV/$UAC_CSV"		\
 		-inf "$DIR_CSV/$UAS_CSV"		\
 		-key custom_event message-summary	\
-		-t un					\
+		-t u1					\
 		$SRV_SIP_IP:$SRV_SIP_PORT &> /dev/null &
 }
 
