@@ -3,12 +3,12 @@ Overclocked raspberry pi 4 running raspbian buster with a Sandisk U1 MicroSD car
 
 ```
 pi@raspberrypi:~ $ cat /etc/issue
-Raspbian GNU/Linux 11 \n \l
+Raspbian GNU/Linux 12 \n \l
 ```
 
 ```
 pi@raspberrypi:~ $ uname -a
-Linux pisip.govoip.ro 6.1.21-v7l+ #1639 SMP Fri Mar 24 16:59:30 GMT 2023 armv7l GNU/Linux
+Linux pisip.govoip.ro 6.1.0-rpi8-rpi-v8 #1 SMP PREEMPT Debian 1:6.1.73-1+rpt1 (2024-01-25) aarch64 GNU/Linux
 ```
 
 <br />
@@ -18,13 +18,13 @@ Linux pisip.govoip.ro 6.1.21-v7l+ #1639 SMP Fri Mar 24 16:59:30 GMT 2023 armv7l 
 Add repo key:
 
 ```
-wget -qO - https://repo.govoip.ro/repo.key | sudo apt-key add -
+wget -qO - https://repo.govoip.ro/repo.key | gpg --dearmor | sudo tee /etc/apt/keyrings/govoip.gpg > /dev/null
 ```
 
 Add repo:
 
 ```
-echo 'deb https://repo.govoip.ro bullseye main' | sudo tee --append /etc/apt/sources.list > /dev/null
+echo 'deb [arch=arm64, signed-by=/etc/apt/keyrings/govoip.gpg] https://repo.govoip.ro bookworm main' | sudo tee --append /etc/apt/sources.list > /dev/null
 ```
 
 Get repo:
@@ -34,19 +34,20 @@ sudo apt-get update
 
 sudo apt-get install kamailio
 sudo apt-get install ngcp-rtpengine
+sudo apt-get install opensips
 ```
 
 
 ### 1. Kamailio `.deb`s
-- kamailio 5.7.0 -> 5.7 branch at commit 1c23c2f
+- kamailio 5.8.2
 
 
 ### 2. RTPEngine `.deb`s
-- rtpengine 11.4.0.0 -> master branch at commit 3760c8d
+- rtpengine 12.4.1
 
 
 ### 3. OpenSIPs `.deb`s
-- opensips 3.4.0 -> 3.4 branch at commit deeefa7
+- opensips 3.5.0-rc1
 
 
 <br />
@@ -167,34 +168,7 @@ RTP media continues to be sent after RE-INVITE on new UAC port
 
 <br />
 
-##### 6. RE-INVITE test with T38<->T38 media
-```
-Same as 2. but with RTP instead of Pause and RE-INVITE updates UAC/UAS media port.
-After RE-INVITE, media will flow:
-UAC <---T38---> RPI RTP SERVER <---T38---> UAS
-```
-
-<br />
-
-##### 7. RE-INVITE test with T38<->RTP media
-```
-Same as 2. but with RTP instead of Pause and RE-INVITE updates UAC/UAS media port.
-After RE-INVITE, media will flow:
-UAC <---T38---> RPI RTP SERVER <---RTP---> UAS
-```
-
-<br />
-
-##### 8. RE-INVITE test with T38<->SRTP media
-```
-Same as 2. but with SRTP instead of Pause and RE-INVITE updates UAC/UAS media port.
-After RE-INVITE, media will flow:
-UAC <---T38---> RPI RTP SERVER <---SRTP---> UAS
-```
-
-<br />
-
-##### 9. SUBSCRIBE/NOTIFY test
+##### 6. SUBSCRIBE/NOTIFY test
 ```
           SUBSCRIBE
 SIPP UAC  -------->  RPI SIP SERVER
